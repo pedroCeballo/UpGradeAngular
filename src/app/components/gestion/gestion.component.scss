@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #cfcccc;
+}
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 30px;
+}
+.form {
+    display: flex;
+    align-items: center;
+}
+form {
+    flex: 1;
+}
+.Vista_item {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
