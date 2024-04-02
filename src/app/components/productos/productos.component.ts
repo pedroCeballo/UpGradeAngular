@@ -15,7 +15,7 @@ export class ProductosComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<Products[]>('http://localhost:3000/products')
+    this.http.get<Products[]>('http://localhost:3000/products') //he creado un archivo Products.json con los productos y la he lanzado con jason-server (para intentar agregar productos "PUT")
       .subscribe(data => {
         this.products = data;
       });
