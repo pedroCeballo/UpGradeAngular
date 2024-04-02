@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProductsService } from 'src/app/services/productos.service';
 import Swal from 'sweetalert2';
@@ -10,16 +10,15 @@ import Swal from 'sweetalert2';
 })
 export class GestionComponent {
   formulario: FormGroup;
-  formbuilder = inject(FormBuilder);
 
-  constructor(private productsService: ProductsService) {
-    this.formulario = this.formbuilder.group({
-      name: [],
-      price: [],
-      description: [],
-      image: [],
-      stars: [] 
-    })
+  constructor(private formBuilder: FormBuilder, private productsService: ProductsService) {
+    this.formulario = this.formBuilder.group({
+      name: [''],
+      price: [''],
+      description: [''],
+      image: [''],
+      stars: [''] 
+    });
   }
 
   name: string = 'Complete Santa Cruz 8.0'
@@ -29,13 +28,8 @@ export class GestionComponent {
   stars: string = '5'
 
   async onSubmit() {
-    try {
-      const response = await this.productsService.addItem(this.formulario.value);
+      await this.productsService.addItem(this.formulario.value);
       Swal.fire("Producto creado correctamente!");
-      console.log('Crado', response);
-    } catch (error) {
-      Swal.fire("Error al crear");
-      console.error('Error', error);
-    }
+      this.formulario.reset();
   }
 }

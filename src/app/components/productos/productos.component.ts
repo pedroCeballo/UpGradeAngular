@@ -15,7 +15,7 @@ export class ProductosComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<Products[]>('https://my-json-server.typicode.com/franlindebl/shopeame-api-v2/products')
+    this.http.get<Products[]>('http://localhost:3000/products')
       .subscribe(data => {
         this.products = data;
       });
